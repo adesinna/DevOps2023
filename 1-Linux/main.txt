@@ -1,0 +1,12 @@
+echo $SHELL
+    This will give you the kind of shell you are using
+
+echo string1 ... stringN
+    This will print out any string or word on the screen
+
+
+ls
+    This will list all the files in the directory
+
+cd directory_name or path
+    This will navigate into the directory or
