@@ -18,8 +18,8 @@ sudo apt update
 sudo apt install awscli -y
 
 # Configure AWS CLI with provided values
-aws configure set aws_access_key_id AKIA2TMJFJSUBBS6EF6U
-aws configure set aws_secret_access_key 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
+aws configure set aws_access_key_id
+aws configure set aws_secret_access_key
 aws configure set default.region us-west-1
 aws configure set default.output_format json
 
