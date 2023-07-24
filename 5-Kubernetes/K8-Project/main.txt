@@ -1,0 +1,4 @@
+url for config map
+secrets for secrets
+
+minikube service webapp-service # to expose the service on minikube

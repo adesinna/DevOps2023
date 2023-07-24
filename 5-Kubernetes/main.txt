@@ -1,0 +1,67 @@
+Kubernetes is a container orchestration tool. In case the docker engine fails, all the container will be down, that is
+what kubernetes solves. It simply makes sure there is high availability.
+
+There would be a master node and other worker nodes, the master node controls the other nodes.
+
+It manages the clusters of container runtime environment.
+
+
+Kubernetes Architecture
+
+    Master Node:
+
+        API Server:
+            - It handles all the request and enables communication across stack services.
+
+            - Component on the master that exposes the K8 API
+
+            - It is the front-end for the Kubernetes control plane
+
+            - Admins connects to it using kubectl CLI
+
+
+        etcd Server:
+            It stores all the information of everything in the cluster
+
+
+
+        Scheduler:
+            It assigns pods to nodes, based on certain rules
+
+
+        Controller Manager:
+            It monitors the worker node and pods, replicates  them when needed.
+
+
+
+    Worker Node:
+        Kubelet:
+            Listen to masters node and makes sure the pods are running
+
+
+        Kube Proxy:
+            The network rules and policies
+
+
+        Container Runtime:
+            It is the engine where the container runs. Like Docker engine.
+
+
+
+
+Pods:
+    Pods provides all the resources a container needs to run. Containers live inside a pod.
+
+    There is always a main container and a peripheral container that helps the main container, apart from
+    this it is mostly one container in a pod.
+
+
+Overlay Network:
+    Some suppose a pod in node A wants to communicate with another pod in Node B, it uses something called overlay
+    network.
+
+    In every node there is a private subnet, and it uses a switch called "bridge0", where all the pods can communicate with each other.
+    To communicate to other pods in another node, bridge0 sends it to a router called "wg0" of its own node, this will now send
+    it to the "wg0" of the destination node where it will route it to the bridge0 of the destination, that finally communicates it to the pod.
+
+
