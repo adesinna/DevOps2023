@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: frontend-app
+  template:
+    metadata:
+      labels:
+        app: frontend-app
+    spec:
+      containers:
+      - name: frontend-container
+        image: your-frontend-image:latest
+        ports:
+        - containerPort: 80
+        env:
+        - name: BACKEND_URL
+          valueFrom:
+            configMapKeyRef:
+              name: frontend-config
+              key: api_url  # Use the api_url key from the frontend-config ConfigMap
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend-service
+spec:
+  selector:
+    app: frontend-app
+  ports:
+  - protocol: TCP
+    port: 80  # Expose the frontend service on port 80
+    targetPort: 80
+  type: NodePort
+  nodePort: 30001  # Assign NodePort 30001 to the frontend service

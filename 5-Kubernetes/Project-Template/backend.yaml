@@ -1,0 +1,54 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: backend-api
+  template:
+    metadata:
+      labels:
+        app: backend-api
+    spec:
+      containers:
+      - name: backend-container
+        image: your-backend-image:latest
+        ports:
+        - containerPort: 8080  # Expose the backend service on port 8080
+        env:
+        - name: DATABASE_HOST
+          value: database-service
+        - name: DATABASE_PORT
+          valueFrom:
+            secretKeyRef:
+              name: database-secret
+              key: dbport
+        - name: DATABASE_NAME
+          valueFrom:
+            secretKeyRef:
+              name: database-secret
+              key: dbname
+        - name: DATABASE_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: database-secret
+              key: username
+        - name: DATABASE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: database-secret
+              key: password
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend-service
+spec:
+  selector:
+    app: backend-api
+  ports:
+  - protocol: TCP
+    port: 8080  # Expose the backend service on port 8080
+    targetPort: 8080

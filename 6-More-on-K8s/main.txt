@@ -1,0 +1,2 @@
+K8s is an opensource system for automating, deployment, scaling and management of containerized applications.
+

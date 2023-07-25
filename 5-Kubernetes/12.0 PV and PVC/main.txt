@@ -1,0 +1,21 @@
+Sure thing! Let's imagine you have a bunch of toys (applications) that you want to keep organized and put away in a toy box
+(storage) when you're not playing with them. Kubernetes, like a magical organizer, helps you manage these toys efficiently.
+
+Now, in Kubernetes, we have two special helpers to take care of storing our toys:
+
+1. PVC (Persistent Volume Claim) - Think of PVC as a ticket or a request slip you give to the magical toy organizer
+(Kubernetes) when you want to store a toy (data) in the toy box (storage). You tell Kubernetes how much space you need
+for your toy (PVC) and ask it to find a suitable spot in the toy box (Persistent Volume) to keep your toy safe.
+
+2. PV (Persistent Volume) - A PV is like an empty storage box that the magical toy organizer (Kubernetes) provides to
+store your toy (data). It's a pre-allocated space for you to put your toy. When you ask for space with a PVC,
+Kubernetes looks for an available PV that matches your request and gives it to you. Once you have a PV,
+you can store your toy (data) inside it, and it will stay there until you want to take it out.
+
+So, in short:
+
+- PVC (Persistent Volume Claim) is like a request slip you give to Kubernetes, telling it how much storage space you need for your toy.
+- PV (Persistent Volume) is like an empty toy box that Kubernetes provides to keep your toy safe and organized.
+
+With PVC and PV working together, you can store your toys (data) in Kubernetes, making sure they are safe and always
+available whenever you want to play with them!
