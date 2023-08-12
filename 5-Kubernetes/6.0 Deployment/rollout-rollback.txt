@@ -1,0 +1,39 @@
+xSure, I can provide you with YAML examples for both rollout and rollback scenarios in Kubernetes.
+
+Rollout Deployment YAML Example:
+
+Let's assume you have a simple web application deployment named "web-app" and you want to update it to a new version.
+
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: web-app
+  template:
+    metadata:
+      labels:
+        app: web-app
+    spec:
+      containers:
+        - name: web-app
+          image: your-registry/web-app:1.0 # Initial version
+
+
+To update the deployment to a new version (2.0), you can modify the deployment's YAML or use the `kubectl set image` command mentioned earlier.
+
+Rollback Deployment YAML Example:
+
+Assuming you've already deployed version 2.0 of your "web-app" and want to rollback to version 1.0 due to issues:
+
+bash
+kubectl rollout undo deployment/web-app
+
+
+You don't need to modify the YAML since Kubernetes manages the rollback based on the deployment's revision history.
+
+Remember, these are simplified examples. In real-world scenarios, you might want to consider strategies for handling readiness and liveness probes, setting update policies, and specifying resource limits. Always test these processes in a controlled environment before applying them to production.

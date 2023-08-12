@@ -12,8 +12,8 @@ sudo apt update
 sudo apt install awscli -y
 
 # Configure AWS CLI with provided values
-aws configure set aws_access_key_id XXXX
-aws configure set aws_secret_access_key zzzz
+aws configure set aws_access_key_id
+aws configure set aws_secret_access_key
 aws configure set default.region us-west-1
 aws configure set default.output_format json
 
@@ -24,3 +24,5 @@ eksctl create cluster \
     --zones us-west-1a,us-west-1c \
     --node-type t3.small \
     --nodes 2
+
+eksctl delete cluster --name test-cluster
